@@ -1,0 +1,143 @@
+/* ===========================
+   NAVBAR BASE
+   =========================== */
+
+   .fondo {
+    background-color: #07435a;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    padding: 10px 10px 18px 0px;
+
+}
+
+.fondo .navbar-brand {
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 1.5rem;
+}
+
+.fondo .navbar-nav .nav-link {
+    color: #ecf0f1;
+    transition: color 0.3s ease;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.fondo .navbar-nav .nav-link:hover {
+    color: #3498db;
+}
+
+.fondo .navbar-nav .nav-link.active {
+    color: #ffffff;
+    font-weight: 600;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 6px;
+}
+
+
+/* ===========================
+   CARRITO DE COMPRAS
+   =========================== */
+
+.cart-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+
+/* ===========================
+   MENÚ HAMBURGUESA
+   =========================== */
+
+.fondo .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.4);
+    margin-left: 10px;
+    padding: 2px;
+    border-radius: 6px;
+}
+
+.fondo .menu-icono {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+
+/* ===========================
+    INPUT DE BÚSQUEDA
+   =========================== */
+
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 14px;
+
+    /* efecto glass suave */
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(8px);
+
+    border: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.search-input {
+    border: none;
+    outline: none;
+    width: 160px;
+    font-size: 14px;
+    background: transparent;
+    color: #ffffff;
+}
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.55); /* Blanco suave */
+}
+.search-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+.search-input {
+    margin-left: 8px; /* separa el texto de la lupa */
+}
+
+
+
+
+/*
+===========================
+Sacando/Modificando Propiedades Bootstrap ===========================
+*/
+.fondo .carrito svg {
+    color: #fff !important;
+    fill: #fff !important;
+    /* Forzamos a color blanco ya que la propiedad de Bootstrap + MUI Icons nos cambia a negro*/
+}
+
+/* Contorno sutil */
+.custom-toggler:focus,
+.custom-toggler:active,
+.custom-toggler:focus-visible {
+    outline: none !important;
+    box-shadow: 0 0 3px rgba(255, 255, 255, 0.4) !important; /* Glow MUY leve */
+    border-color: rgba(255, 255, 255, 0.25) !important;     /* Bordecito tenue */
+}
+
+
+/*
+===========================
+RESPONSIVE
+===========================
+*/
+
+/* Desktop: mover Productos a la izquierda del input */
+@media (min-width: 992px) {
+    .navbar-nav {
+        order: 1;
+    }
+
+    .search-container {
+        order: 2;
+    }
+}
+
