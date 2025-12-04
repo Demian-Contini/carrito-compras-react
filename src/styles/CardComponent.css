@@ -96,12 +96,17 @@ body {
     color: white;
 }
 
+.remove-button, .add-button {
+    min-width: 160px;
+    height: 40px;    
+}
 .remove-button:hover {
     background-color: #c0392b;
 }
 .add-button:hover {
     background-color: #27ae60;
 }
+
 
 /* MEDIA QUERIES */
 
@@ -144,6 +149,11 @@ body {
         margin: 0 0 5px 0;
     }
     
+    .remove-button, .add-button {
+        min-width: 90%; 
+        max-width: 300px;
+        margin: 0 auto;
+    }
     .remove-button, .add-button {
         min-width: 90%; 
         max-width: 300px;
