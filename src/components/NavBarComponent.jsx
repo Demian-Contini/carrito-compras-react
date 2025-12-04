@@ -43,7 +43,7 @@ export const NavBarComponent = () => {
 
                     {/* Carrito */}
                     <NavLink to="/carrito" className="nav-link carrito">
-                        <Badge badgeContent={totalItems} color="primary">
+                        <Badge badgeContent={totalItems} color="error">
                             <ShoppingCart />
                         </Badge>
                     </NavLink>
