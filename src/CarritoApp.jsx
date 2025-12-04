@@ -2,10 +2,12 @@ import { Navigate, Route, Routes } from "react-router-dom";import { NavBarCompon
 import { ProductsPage } from "./pages/ProductsPage";
 import { CartPage } from "./pages/CartPage";
 import { ProductProvider } from "./context/ProductProvider";
+import { CartProvider } from "./context/CartProvider";
 
 export const CarritoApp = () => {
   return (
     <ProductProvider>
+      <CartProvider>
     <NavBarComponent/>
     <div className ='container'>
       <Routes>
@@ -14,6 +16,7 @@ export const CarritoApp = () => {
           <Route path='/*' element ={<Navigate to='/'/>}></Route>
       </Routes>
     </div>
+    </CartProvider>
     </ProductProvider>
   )
 }
