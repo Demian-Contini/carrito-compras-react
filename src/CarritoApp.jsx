@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from "react-router-dom";import { NavBarComponent } from "./component/NavBarComponent";
+import { Navigate, Route, Routes } from "react-router-dom";import { NavBarComponent } from "./components/NavBarComponent";
 import { ProductsPage } from "./pages/ProductsPage";
 import { CartPage } from "./pages/CartPage";
 
