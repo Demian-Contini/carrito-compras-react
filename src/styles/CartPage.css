@@ -1,0 +1,190 @@
+/* ===========================
+   CONTENEDOR PRINCIPAL
+   =========================== */
+   .cart-page {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Mensaje de carrito vacío */
+.empty-cart {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #555;
+}
+
+/* ===========================
+   LISTADO DE ITEMS
+   =========================== */
+.cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* ===========================
+   CARD INDIVIDUAL
+   =========================== */
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.cart-item:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Imagen del producto */
+.cart-item-img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-right: 15px;
+}
+
+/* Detalles del producto */
+.cart-item-details {
+    flex: 1;
+}
+
+.cart-item-title {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.cart-item-description {
+    margin: 5px 0 10px;
+    margin-right: 10px;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* ===========================
+   ACCIONES DEL ITEM
+   =========================== */
+.cart-item-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.cart-item-price {
+    font-size: 20px;
+    font-weight: 700;
+    color: #2ecc71;
+}
+
+/* ===========================
+   CONTROLES DE CANTIDAD
+   =========================== */
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.quantity-controls button {
+    width: 28px;
+    height: 28px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+}
+
+/* Botón + verde claro */
+.quantity-controls button.increment {
+    background-color: #2ecc71;
+}
+.quantity-controls button.increment:hover {
+    background-color: #27ae60;
+}
+
+/* Botón - rojo claro */
+.quantity-controls button.decrement {
+    background-color: #e22f1b;
+}
+.quantity-controls button.decrement:hover {
+    background-color: #ce220f;
+}
+
+/* Botón eliminar */
+.remove-button {
+    color: white;
+    background-color: #e22f1b; 
+    border: none;
+    padding: 5px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.remove-button:hover {
+    background-color: #ce220f;
+}
+
+/* ===========================
+   TOTAL Y BOTÓN COMPRAR
+   =========================== */
+.cart-total-section {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-total {
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.buy-button {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.buy-button:hover {
+    background-color: #27ae60;
+}
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+@media (max-width: 768px) {
+    .cart-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .cart-item-details {
+        margin-bottom: 10px;
+    }
+
+    .cart-item-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .quantity-controls {
+        justify-content: center;
+    }
+
+    .cart-total-section {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+}

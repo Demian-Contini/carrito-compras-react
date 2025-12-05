@@ -1,93 +1,56 @@
-import { useContext } from "react"
-import { CartContext } from '../context/CartContext'
-import Swal from "sweetalert2"
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
+import Swal from "sweetalert2";
+import "../styles/CartPage.css";
 
 export const CartPage = () => {
+  const { shoppingList, removeProduct, incrementQuantity, decrementQuantity } = useContext(CartContext);
 
-  const { shoppingList, removeProduct, incrementQuantity, decrementQuantity } = useContext(CartContext)
-
-  const calculateTotal = () => {
-    // Suma de (precio * cantidad) y formato
-    return shoppingList.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2)
-  }
+  const calculateTotal = () =>
+    shoppingList.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2);
 
   const handlerPurchase = () => {
-    const productsPurchased = shoppingList.map(product => `${product.title} x ${product.quantity}`).join('\n')
+    const productsPurchased = shoppingList.map(p => `${p.title} x ${p.quantity}`).join("\n");
     Swal.fire({
-      icon: 'success',
-      title: 'La compra se ha realizado con éxito',
-      html: `<p> Has comprado: </p> <pre>${productsPurchased}</pre>`
-    })
-  }
-
+      icon: "success",
+      title: "Compra realizada con éxito",
+      html: `<p>Has comprado:</p><pre>${productsPurchased}</pre>`
+    });
+  };
 
   return (
-    <>
-      <table className="table table-hover table-striped">
-        <thead>
-          <tr>
-            <th scope="col">Nombre</th>
-            <th scope="col">Precio</th>
-            <th scope="col">Cantidad</th>
-            <th scope="col">Eliminar</th>
-          </tr>
-        </thead>
-        <tbody>
+    <div className="cart-page">
+      {shoppingList.length === 0 && <p className="empty-cart">El carrito está vacío</p>}
 
+      <div className="cart-items">
+        {shoppingList.map(product => (
+          <div key={product.id} className="cart-item">
+            <img src={product.img} alt={product.title} className="cart-item-img" />
 
-          {shoppingList.map(product => (
+            <div className="cart-item-details">
+              <h3 className="cart-item-title">{product.title}</h3>
+              <p className="cart-item-description">{product.description}</p>
+            </div>
 
-            <tr key={product.id}>
-              <th scope="row">{product.title}</th>
-              {/* Formato de dos decimales al precio unitario */}
-              <td>${product.price.toFixed(2)}</td> 
-              <td>
-               
-                <div className="d-flex align-items-center"> {/* d-flex (Flexbox) para alinear los botones en línea */} 
-                  <button
-                    className="btn btn-outline-primary btn-sm"
-                    onClick={() => decrementQuantity(product.id)}
-                  >-</button>
-                  <span className="mx-2">{product.quantity}</span> {/* Muestra la cantidad */}
-                  <button
-                    className="btn btn-outline-primary btn-sm"
-                    onClick={() => incrementQuantity(product.id)}
-                  >+</button>
-                </div>
-              </td>
-              <td>
-                <button
-                  className="btn btn-danger btn-sm"
-                  onClick={() => removeProduct(product.id)}
-                >Eliminar</button>
-              </td>
-            </tr>
-
-          ))}
-          {/* Fila del total */}
-          <tr>
-            <th><b>TOTAL: </b></th>
-            <td></td>
-            <td></td>
-            {/* Ubicar el total en la última columna */}
-            <td><b>${calculateTotal()}</b></td>
-          </tr>
-
-
-        </tbody>
-      </table>
-
-      <div className="d-grid gap-2">
-        <button
-          className="btn btn-primary"
-          type="button"
-          onClick={handlerPurchase}
-          // Deshabilitar el botón si el carrito está vacío
-          disabled={shoppingList.length === 0} 
-        >Comprar</button>
-
+            <div className="cart-item-actions">
+              <p className="cart-item-price">${product.price.toFixed(2)}</p>
+              <div className="quantity-controls">
+                <button className="decrement" onClick={() => decrementQuantity(product.id)}>-</button>
+                <span>{product.quantity}</span>
+                <button className="increment"  onClick={() => incrementQuantity(product.id)}>+</button>
+              </div>
+              <button className="remove-button" onClick={() => removeProduct(product.id)}>Eliminar</button>
+            </div>
+          </div>
+        ))}
       </div>
 
-    </>
-  )
-}
+      {shoppingList.length > 0 && (
+        <div className="cart-total-section">
+          <p className="cart-total">Total: ${calculateTotal()}</p>
+          <button className="buy-button" onClick={handlerPurchase}>Comprar</button>
+        </div>
+      )}
+    </div>
+  );
+};

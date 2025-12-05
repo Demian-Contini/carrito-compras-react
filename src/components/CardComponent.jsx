@@ -23,14 +23,18 @@ export const CardComponent = ({ id, image, title, description, price, handlerAdd
     
     return (
         <div className="card">
-
-            <img src={image} alt={title} className="card-img" />
-
+    
+            <img
+                src={image || "https://via.placeholder.com/120"}
+                alt={title}
+                className="card-img"
+            />
+    
             <div className="card-content">
                 <h3 className="card-title">{title}</h3>
                 <p className="card-description">{description}</p>
                 <p className="card-price">${price}</p>
-
+    
                 {
                     // 'added' refleja el estado GLOBAL
                     added
@@ -49,9 +53,9 @@ export const CardComponent = ({ id, image, title, description, price, handlerAdd
                             Agregar al Carrito
                         </button>
                 }
-
+    
             </div>
-
+    
         </div>
-    )
-}
+    )}
+    
